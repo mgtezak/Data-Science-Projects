@@ -191,10 +191,9 @@ st.write('''
     - *XGBClassifier*
     - *LGBMClassifier*
          
-    Unsurprisingly logistic regression was by far the fastest, but I got the best scores using LGBM, XGB and HistGradientBoost.
-    I then tried two different ways of combining these estimators.
-    - *VotingClassifier*: performed well enough but not always better than its best estimator
-    - *StackingClassifier* (with a simple logistic regression as final estimator): performed better than even its best base estimator
+    I then tried two different ways of combining some of these estimators:
+    - *VotingClassifier*
+    - *StackingClassifier* (with a simple logistic regression as final estimator)
 ''')
 
 st.divider()
@@ -202,15 +201,32 @@ st.markdown('<a name="evaluation&interpretation"></a>', unsafe_allow_html=True)
 st.write('## Evaluation & Interpretation')
 
 st.write('''
-    With a simple training-validation-split I got an area under the ROC curve of **0.8665**,
+    
+    I tested my different strategies for feature engineering and scaling against a baseline 
+    of no feature engineering at all and minimal scaling (simply standardizing all columns).
+    Unfortunately I have to admit that my preprocessing approaches had only a very minor impact on the final predictive power of my model (+0.002).
+    Also scaling the skewed features helped a tiny bit, it didn't seem to matter whether I used log scaling, 
+    power transformation or quantile standardization.
+         
+
+    I did, however, see great variability in scores and time-efficiency between the different classification algorithms.
+    - Unsurprisingly *LogisticRegression* was by far the fastest, but produced the worst score.
+    - *LinearSVC* had a slightly better score, but took a lot longer.
+    - *RandomForest*, *ExtraTrees* and *AdaBoost* had even better scores but were also very time-consuming.
+    - The best scores came from *LGBM*, *XGB* and *HistGradientBoost* classifiers while only taking about twice as long as logistic regression. So I used these three as base estimators.
+    - The *VotingClassifier* performed well enough but not always better than its best estimator, whereas the *StackingClassifier* performed even better than that.
+    
+    With a simple training-validation-split I got an area under the ROC curve of **0.8683**,
     which turned out to be very close to my final score on the actual testset: **0.8675**.
 ''')
 
 st.image(PLOT_PATH + 'roc_pr_curves.png')
 st.write('''
     It's worth mentioning that every single classifier I tried had relatively low variability in their scores, so the results are robust.
-    This could be in part due to the large amount of data available, 
-    so that any sample used for training, will be fairly representative of the entire dataset.
+    No doubt this is in part due to the large amount of data available, 
+    so that any sample used for training, will be fairly representative of the entire dataset. 
+    But it should be mentioned that feature engineering and further scaling also had a stabilizing impact here.
+         
 ''')
 
 st.markdown('<hr style="border:0.5px solid #FFDFC2;"/>', unsafe_allow_html=True)
@@ -221,10 +237,10 @@ st.write('''
     But what does this result really point to? Obviously smoking does not cause people to become taller.
     It's also implausible, although not impossible, that there's something about being tall itself that causes an increased tendency to smoke.
     The most likely explanation is, however, that being tall in the context of this dataset serves simply a proxy for being male. 
-    After all men are much more likely to smoke. Yet another reminder that *correlation does not equal causation*.
+    After all, men are much more likely to smoke than women. Yet another reminder that *correlation does not equal causation*.
 
-    In some sense this insight is quite unhelpful because it doesn't help us understand how smoking changes the body.
-    In another sense this result is highly interesting because it shows how powerful a predictor a person's sex is. 
+    On the one hand this insight is quite unhelpful because it doesn't help us understand how smoking changes the body.
+    On the other hand this result is highly interesting because it shows how powerful a predictor a person's sex is. 
     It is such a strong predictor for smoker status, that even a variable like height 
     which correlates imperfectly with sex trumps most other factors such as blood pressure or lipid profile.
 ''')
