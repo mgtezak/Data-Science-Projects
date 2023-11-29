@@ -4,7 +4,7 @@ import streamlit as st
 # Local imports
 import st_utils
 
-st.set_page_config(page_title="Introduction", page_icon="🏠", layout="wide")
+st.set_page_config(page_title="Michael Tezak – Data Science", page_icon="🏠", layout="wide")
 st.markdown(f'<style>{open("style.css").read()}</style>', unsafe_allow_html=True)
 
 st_utils.get_sidebar_links()
