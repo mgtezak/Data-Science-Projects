@@ -38,23 +38,16 @@ st_utils.get_sidebar_links()
 st.title('Mohs Hardness Regression (*in progress*)')
 st.caption('Kaggle Competition Playground Series – Season 3, Episode 25')
 
-st.image(TITLE_IMG_PATH, caption='Image credit: [Hazel Gibson]()')
+st.image(TITLE_IMG_PATH, caption='Image credit: Hazel Gibson')
 
 st.markdown('<a name="intro"></a>', unsafe_allow_html=True)
 st.write('## Introduction')
-# st.write('''
-#          This project was done in the context of 
-#          This project relies on real word data gathered from 49 different weather stations spread across Australia. 
-#          There is version of [this dataset on Kaggle](https://www.kaggle.com/datasets/arunavakrchakraborty/australia-weather-data) but I found
-#          The target variable *RainTomorrow* is binary
 
-#          dataset [hi](https://rdrr.io/cran/rattle.data/man/weatherAUS.html)
-         
-#          2007-11-01   2023-03-25''')
-# # https://docs.google.com/document/d/1jpf_bB-TFMacsucUzkPHaMWB2LF22GWylV_m6j6GyCg/edit
-
-
-# https://blogs.egu.eu/geolog/2020/09/25/freidrich-mohs-and-the-mineral-scale-of-hardness/
+st.write('''
+    - [Link to the competition](https://www.kaggle.com/competitions/playground-series-s3e25/)
+    - [Link to the original dataset](https://www.kaggle.com/datasets/jocelyndumlao/prediction-of-mohs-hardness-with-machine-learning)
+    - [Related blog post](https://blogs.egu.eu/geolog/2020/09/25/freidrich-mohs-and-the-mineral-scale-of-hardness/)
+''')
 
 
 st.divider()
@@ -111,7 +104,20 @@ st.write('''
     - Most variables including the target are multimodal (their distributions have multiple peaks) -> maybe a cluster analysis could be interesting
 ''')
 
-# st.image(PLOT_PATH + 'heatmap.png')
+
+st_utils.minor_div()
+
+st.image(PLOT_PATH + 'heatmap.png')
+
+st.write('''
+    - A lot of intercorrelation amongst the features – problematic for inference 
+    - allelectrons_Average and atomicweight_Average correlate nearly perfectly –> drop one of them?
+    - Only a few moderate correlations with the target:
+        - allelectrons_Average/atomicweight_Average -0.4
+        - density_Average -0.36
+    - The others have weak negative correlations with the target, interestingly no positive correlations at all
+    - el_neg_chi_Average has close to no correlation at all with the target
+''')
 
 # st_utils.minor_div()
 
