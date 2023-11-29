@@ -1,7 +1,6 @@
 import streamlit as st
 
 def get_sidebar_links():
-    st.sidebar.write('')
     st.sidebar.markdown('''
         <span style="font-size: 0.9em;">Further Links:</span>   
         <a href="https://mgtezak.github.io" style="color: #1D3F5E; font-weight: Normal;"> ~ My Website</a>  
