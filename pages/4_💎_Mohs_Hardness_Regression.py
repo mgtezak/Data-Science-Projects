@@ -51,16 +51,19 @@ st.write('## Introduction')
 #          dataset [hi](https://rdrr.io/cran/rattle.data/man/weatherAUS.html)
          
 #          2007-11-01   2023-03-25''')
-# https://blogs.egu.eu/geolog/2020/09/25/freidrich-mohs-and-the-mineral-scale-of-hardness/
 # # https://docs.google.com/document/d/1jpf_bB-TFMacsucUzkPHaMWB2LF22GWylV_m6j6GyCg/edit
+
+
+# https://blogs.egu.eu/geolog/2020/09/25/freidrich-mohs-and-the-mineral-scale-of-hardness/
+
 
 st.divider()
 
 st.markdown('<a name="eda"></a>', unsafe_allow_html=True)
 st.write('## Exploratory Data Analysis')
-# st.write('A first look at the dataset:')
+st.write('A first look at the dataset:')
 
-# st.dataframe(pd.read_csv(CSV_PATH + 'head.csv'))
+st.dataframe(pd.read_csv(CSV_PATH + 'head.csv'))
 st.write('''
 
     Explanation of each feature can be found in the paper Prediction of Mohs Hardness with Machine Learning Methods by Joy C.Garnet.
@@ -92,7 +95,21 @@ st.write('''
     - All the features are continuous as well.
 ''')
 
-# st_utils.minor_div()
+st_utils.minor_div()
+
+st.write('''
+    We can check for data drift by checking, whether or not the feature distributions 
+    of the test data differ from those of the training data.
+''')
+
+st.image(PLOT_PATH + 'data_drift.png')
+
+st.write('''
+    - No data drift – train and test set distributions are very much aligned
+    - Some features are right skewed
+    - Others are left skewed
+    - Most variables including the target are multimodal (their distributions have multiple peaks) -> maybe a cluster analysis could be interesting
+''')
 
 # st.image(PLOT_PATH + 'heatmap.png')
 
