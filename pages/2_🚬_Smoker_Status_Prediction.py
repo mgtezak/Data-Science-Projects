@@ -51,7 +51,8 @@ st.write('''
     I've approached this project with the intention of not simply trying to produce a well-performing prediction model, 
     but to also generate and communicate insights into how the features relate to each other and the target variable
     and to cautiously touch on questions about the underlying causality.
-    If you'd like to check out this project's source code you can check out my [Kaggle notebook](https://www.kaggle.com).
+    If you'd like to check out this project's source code you can check out my 
+    [Kaggle notebook](https://www.kaggle.com/code/michaeltezak/eda-viz-pipelines-stacking).
 ''')
 
 st.divider()
@@ -64,7 +65,7 @@ st.dataframe(pd.read_csv(CSV_PATH + 'head.csv'))
 
 st.write('''
     - Each row corresponds to measurements taken from one individual
-    - There are no duplicates or missing values
+    - There are no duplicate rows or missing values
     - 265,427 rows in total
     - 159,256 (60 %) belong to the training set (target variable included)
     - 106,171 (40 %) belong to the test set (target variable not included)
@@ -129,7 +130,7 @@ st.write('''
         - eyesight(left) & eyesight(right)
         - hearing(left) & hearing(right)
         - systolic & relaxation
-    - Interestingly the lipid profile can be further divided into two correlated pairs:
+    - Interestingly, the lipid profile can be further divided into two correlated pairs:
         - Cholesterol & LDL
         - triglyceride & HDL
         - very little correlation between these two pairs
@@ -204,16 +205,16 @@ st.write('''
     
     I tested my different strategies for feature engineering and scaling against a baseline 
     of no feature engineering at all and minimal scaling (simply standardizing all columns).
-    Unfortunately I have to admit that my preprocessing approaches had only a very minor impact on the final predictive power of my model (+0.002).
-    Also scaling the skewed features helped a tiny bit, it didn't seem to matter whether I used log scaling, 
+    Unfortunately I have to admit that my engineered features had only a very minor impact on the final predictive power of my model (+0.002).
+    Likewise, scaling the skewed features helped only a tiny bit and it didn't seem to matter whether I used log scaling, 
     power transformation or quantile standardization.
          
 
     I did, however, see great variability in scores and time-efficiency between the different classification algorithms.
-    - Unsurprisingly *LogisticRegression* was by far the fastest, but produced the worst score.
+    - Unsurprisingly, *LogisticRegression* was by far the fastest, but produced the worst score.
     - *LinearSVC* had a slightly better score, but took a lot longer.
-    - *RandomForest*, *ExtraTrees* and *AdaBoost* had even better scores but were also very time-consuming.
-    - The best scores came from *LGBM*, *XGB* and *HistGradientBoost* classifiers while only taking about twice as long as logistic regression. So I used these three as base estimators.
+    - *RandomForest*, *ExtraTrees* and *AdaBoost* had even better scores but were extremely time-consuming.
+    - The best scores came from *LGBM*, *XGB* and *HistGradientBoost* classifiers, while only taking about twice as long as logistic regression. So I used these three as base estimators.
     - The *VotingClassifier* performed well enough but not always better than its best estimator, whereas the *StackingClassifier* performed even better than that.
     
     With a simple training-validation-split I got an area under the ROC curve of **0.8683**,
@@ -224,7 +225,7 @@ st.image(PLOT_PATH + 'roc_pr_curves.png')
 st.write('''
     It's worth mentioning that every single classifier I tried had relatively low variability in their scores, so the results are robust.
     No doubt this is in part due to the large amount of data available, 
-    so that any sample used for training, will be fairly representative of the entire dataset. 
+    so that any sample used for training will be fairly representative of the entire dataset. 
     But it should be mentioned that feature engineering and further scaling also had a stabilizing impact here.
          
 ''')
@@ -233,21 +234,45 @@ st.markdown('<hr style="border:0.5px solid #FFDFC2;"/>', unsafe_allow_html=True)
 st.image(PLOT_PATH + 'permutation_importance.png')
 
 st.write('''
-    As it turns out, height is one of the very best predictors for predicting whether or not somebody is a smoker. 
+    Height is the very best predictor of whether or not somebody is a smoker. 
+    Even though it is only in second place in the plot above, this is only due to my addition of BMI, 
+    which "steals" some of height's predictive power.
     But what does this result really point to? Obviously smoking does not cause people to become taller.
-    It's also implausible, although not impossible, that there's something about being tall itself that causes an increased tendency to smoke.
-    The most likely explanation is, however, that being tall in the context of this dataset serves simply a proxy for being male. 
-    After all, men are much more likely to smoke than women. Yet another reminder that *correlation does not equal causation*.
+    It's also highly implausible, although technically not impossible, that there's something 
+    about being tall itself that causes an increased tendency to smoke.
+    The most likely explanation is that being tall in the context of this dataset, 
+    which lacks information about sex, serves simply a proxy for being male. 
+    After all, men are much more likely to smoke than women. 
+    Yet another reminder that correlation does not equal causation.
 
-    On the one hand this insight is quite unhelpful because it doesn't help us understand how smoking changes the body.
-    On the other hand this result is highly interesting because it shows how powerful a predictor a person's sex is. 
-    It is such a strong predictor for smoker status, that even a variable like height 
-    which correlates imperfectly with sex trumps most other factors such as blood pressure or lipid profile.
+    Although this insight is somewhat unhelpful because it doesn't help us understand how smoking changes the body,
+    it is nonetheless interesting because it shows how powerful a predictor a person's sex is.
+    It even trumps the biomarker GTP which relates to the body's cell functions, even though elevations in GTP are directly and
+    [causally linked to smoking](https://www.researchgate.net/figure/Expression-of-guanosine-triphosphate-GTP-RhoA-and-RhoA-in-nonsmokers-and-smokers_fig3_44655796).
+    Unsurprisingly, elevated hemoglobin levels are also predictive of being a smoker,
+    as well as triglyceride. 
+    Like GTP, [hemoglobin](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5511531/) and [triglyceride](https://www.sciencedirect.com/science/article/pii/S221475002300032X)
+    are directly influenced by smoking.  
+
+    However, the fact that age is also predictive points to another insight, which is that smoking behavior is generationally dependent.
+    Younger people tend to smoke less, but not because being younger itself makes one less likely to smoke – probably the opposite is true. 
+    They smoke less, because the cultural significance of smoking has decreased in general 
+    and older people grew up in a world in which smoking was much more normalized.
 ''')
 
 st.divider()
 st.markdown('<a name="final-thoughts"></a>', unsafe_allow_html=True)
 st.write('## Final Thoughts')
 st.write('''
-In the end it is a social category, rather
-         ''')
+    The dataset is certainly not ideal for predicting smoker status. 
+    If height is a powerful predictor only because of its relation to sex, one wonders why sex wouldn't be 
+    included in the dataset, as it is rather unlikely that this variable was not recorded in the first place.
+    Attributes such as VO2max or other lung related measurements would likely also have been very informative.
+
+    Another problem with the dataset is its binary conception of smoking. 
+    Someone who has chain-smoked for thirty years but stopped recently is likely to have physical markings of a smoker,
+    which might trump those of someone who smokes five cigarettes a week, 
+    but the dataset defines the former but not the latter as a smoker. 
+         
+    That being said, I learned a ton doing this project and might revisit it later on to try more complex modeling procedures.
+''')

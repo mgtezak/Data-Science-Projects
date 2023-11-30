@@ -41,16 +41,19 @@ st.image(TITLE_IMG_PATH, caption='Image created with DALL·E')
 
 st.markdown('<a name="intro"></a>', unsafe_allow_html=True)
 st.write('## Introduction')
-st.write('''
-         This project was done in the context of 
-         This project relies on real word data gathered from 49 different weather stations spread across Australia. 
-         There is version of [this dataset on Kaggle](https://www.kaggle.com/datasets/arunavakrchakraborty/australia-weather-data) but I found
-         The target variable *RainTomorrow* is binary
 
-         dataset [hi](https://rdrr.io/cran/rattle.data/man/weatherAUS.html)
+st.write("I've already finished this project and am in the process of rebuilding my project presentation here.")
+# st.write('''
+#          This project was done in the context of 
+#          This project relies on real word data gathered from 49 different weather stations spread across Australia. 
+#          There is version of [this dataset on Kaggle](https://www.kaggle.com/datasets/arunavakrchakraborty/australia-weather-data) but I found
+#          The target variable *RainTomorrow* is binary
+
+#         ''')
+
+#  dataset [hi](https://rdrr.io/cran/rattle.data/man/weatherAUS.html)
          
-         2007-11-01   2023-03-25''')
-
+#          2007-11-01   2023-03-25
 # https://docs.google.com/document/d/1jpf_bB-TFMacsucUzkPHaMWB2LF22GWylV_m6j6GyCg/edit
 
 st.divider()
