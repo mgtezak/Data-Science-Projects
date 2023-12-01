@@ -43,6 +43,16 @@ st.markdown('<a name="intro"></a>', unsafe_allow_html=True)
 st.write('## Introduction')
 
 st.write("I've already finished this project and am in the process of rebuilding my project presentation here.")
+
+st.write('''
+    Originally I uploaded an interactive docker containerized version of this project ([link](https://australia-weather-prediction.onrender.com/))
+    which unfortunately takes up to a minute to load, due to the fact that it has dynamic
+    web scraping capabilities using selenium, which is dependent on its own browser and driver. 
+    The Chrome browser and the many pre-trained machine learning models take up a lot of space, 
+    making the app extremely slow to reboot. 
+    Once it's up, however, it works pretty fast. I'm currently revisiting this project to improve both its presentation
+    and its performance. Alas, it's not there yet.
+''')
 # st.write('''
 #          This project was done in the context of 
 #          This project relies on real word data gathered from 49 different weather stations spread across Australia. 
