@@ -6,9 +6,8 @@ import pandas as pd
 import st_utils
 
 # Paths
-CSV_PATH = 'data/mohs_hardness/csv/'
-PLOT_PATH = 'data/mohs_hardness/plots/'
-TITLE_IMG_PATH = 'data/mohs_hardness/mohs-scale-of-hardness.png'
+DATA_PATH = 'data/mohs_hardness/'
+TITLE_IMG_PATH = 'data/mohs_hardness/mohs-scale-of-hardness2.png'
 
 
 st.set_page_config(page_title="Mohs-Hardness-Regression", page_icon="💎", layout="wide")
@@ -20,22 +19,15 @@ st.sidebar.markdown("""
     # Contents
     1. [Introduction](#intro)
     2. [Exploratory Data Analysis](#eda)
+    3. [Modeling](#modeling)
+    4. [Evaluation](#evaluation)
+    5. [Final Thoughts](#final-thoughts)
 """)
-#     3. [Handling Missing Data](#handling-missing-data)
-#     4. [Feature Engineering](#feature-engineering)
-#     5. [Scaling](#scaling)
-#     6. [Modeling](#modeling)
-#     7. [Evaluation & Insights](#evaluation)
-#     8. [Final Thoughts](#final-thoughts)
-# """)
-
 st.sidebar.divider()
-
-
 st_utils.get_sidebar_links()
 
 
-st.title('Mohs Hardness Regression (*in progress*)')
+st.title('Mohs Hardness Regression')
 st.caption('Kaggle Competition Playground Series – Season 3, Episode 25')
 
 st.image(TITLE_IMG_PATH, caption='Image credit: Hazel Gibson')
@@ -56,7 +48,7 @@ st.markdown('<a name="eda"></a>', unsafe_allow_html=True)
 st.write('## Exploratory Data Analysis')
 st.write('A first look at the dataset:')
 
-st.dataframe(pd.read_csv(CSV_PATH + 'head.csv'))
+st.dataframe(pd.read_csv(DATA_PATH + 'head.csv'))
 st.write('''
 
     Explanation of each feature can be found in the paper Prediction of Mohs Hardness with Machine Learning Methods by Joy C.Garnet.
@@ -78,11 +70,11 @@ st.write('''
 st_utils.minor_div()
 
 # # st.write('')
-# # st.dataframe(pd.read_csv(CSV_PATH + 'cols_info.csv'))
+# # st.dataframe(pd.read_csv(DATA_PATH + 'cols_info.csv'))
 
 
 
-st.image(PLOT_PATH + 'nunique.png')
+st.image(DATA_PATH + 'nunique.png')
 st.write('''
     - Continuous target *"Hardness"*
     - All the features are continuous as well.
@@ -95,19 +87,19 @@ st.write('''
     of the test data differ from those of the training data.
 ''')
 
-st.image(PLOT_PATH + 'data_drift.png')
+st.image(DATA_PATH + 'data_drift.png')
 
 st.write('''
     - No data drift – train and test set distributions are very much aligned
     - Some features are right skewed
     - Others are left skewed
-    - Most variables including the target are multimodal (their distributions have multiple peaks) -> maybe a cluster analysis could be interesting
+    - Most variables including the target are multimodal (their distributions have multiple peaks)
 ''')
 
 
 st_utils.minor_div()
 
-st.image(PLOT_PATH + 'heatmap.png')
+st.image(DATA_PATH + 'heatmap.png')
 
 st.write('''
     - A lot of intercorrelation amongst the features – problematic for inference 
@@ -119,21 +111,7 @@ st.write('''
     - el_neg_chi_Average has close to no correlation at all with the target
 ''')
 
-# st_utils.minor_div()
 
-
-
-# st.divider()
-# st.markdown('<a name="#handling-missing-data"></a>', unsafe_allow_html=True)
-# st.write('## Handling Missing Data')
-# st.write('''
-#     - Total missing values: 644,978 (11.85 %)
-#     - Rows with missing values: 140,583  (61.97 %)
-# ''')
-# st.image(PLOT_PATH + 'missing.png')
-
-
-# st.image(PLOT_PATH + 'missing_cols_by_loc.png')
 
 
 # st.divider()
@@ -147,26 +125,111 @@ st.write('''
 # st.write('## Scaling')
 
 
-# st.divider()
-# st.markdown('<a name="modeling"></a>', unsafe_allow_html=True)
-# st.write('## Modeling')
-
-# st.write('''
-
-# ''')
+st.divider()
+st.markdown('<a name="modeling"></a>', unsafe_allow_html=True)
+st.write('''
+## Modeling
 
 
+The basic idea behind this notebook is simply to explore and compare different machine learning models and to stack them on top of each other to create better models. There'll be some **shallow** and some **deep learning**, some **voting** and some **stacking**. I summarized my results in a plot at the end (skip to [Evaluation](#6.-Evaluation)). I'm still trying to figure this stuff out, so any feedback is well appreciated. Thanks!
 
 
 
-# st.divider()
-# st.markdown('<a name="evaluation"></a>', unsafe_allow_html=True)
-# st.write('## Evaluation')
+''')
 
-# # st.image(PLOT_PATH + 'roc_pr_curves.png')
-# st.markdown('<hr style="border:0.5px solid #FFDFC2;"/>', unsafe_allow_html=True)
-# # st.image(PLOT_PATH + 'permutation_importance.png')
 
-# st.divider()
-# st.markdown('<a name="final-thoughts"></a>', unsafe_allow_html=True)
-# st.write('## Final Thoughts')
+st.write('''
+##### Shallow Learning Algorithms
+
+
+First I'll create some functions that help evaluate each model uniformly. Then I'll test 5 different regression algorithms:
+- LR: Linear Regression
+- SVM: Support Vector Machine
+- XGB: Extreme Gradient Boosting
+- LGBM: Light Gradient Boosting Machine
+- RF: Random Forest
+         
+
+**Shallow Learning** Observations:
+- Huge difference between linear regression and the others 
+- Some difference between the others as well 
+- The winner is **Support Vector Machine Regression**
+- Impressive how fast **LGBM** and **XGB** are, considering that their errors are not much worse than that of **SVR**
+''')
+
+st_utils.minor_div()
+st.write('''
+##### Shallow Learning + Voting & Stacking
+
+Next up, we'll use the previous learning algorithms as *base estimators* to build a bigger model, which is hopefully even better than its individual parts. I'm not including **Linear Regression** in the list of base estimators, due to its performance. we'll try 3 approaches: 
+
+1. **Voting Regressor**: This is basically just an averaging of all the predictions of the base estimators.
+
+2. **Stacking Regressor**: The predictions of the base estimators are fed into a final estimator, which learns to make predictions from this *new data*. I wanted to see how much difference the choice of final estimator causes. so I created 2 stacking models:
+    
+    2.1 **Linear Regression** as final estimator. 
+     
+    2.2 **Support Vector Machine Regression** as final estimator
+    
+**Voting & Stacking** Observations:
+- **Voting Regressor** is more or less the average of its base estimators – definitely no improvement!
+- **Stacking with LR** not better than its best base estimator **SVM** and time consuming
+- **Stacking with SVM** the best model so far – apparently the choice of final estimator matters a lot! – unfortunately also the most time consuming to train
+
+''')
+
+st_utils.minor_div()
+st.write('''
+##### Deep Learning
+         
+**Deep Neural Network** Observations:
+- Most time consuming model yet
+- Error is pretty good, but slightly worse than of **Stacking with SVM**
+
+''')
+
+st_utils.minor_div()
+st.write('''
+##### Deep Learning + Stacking
+         
+Now we'll see how much we can improve the **Deep Neural Network** by feeding it predictions of other models. All of these predictions were generated through kfold splitting to avoid data leakage. I saw some people neglect to do this and then get inflated scores as a result that don't reflect their final test scores, so I do recommend it.
+
+We'll test 3 different approaches:
+1. Add only predictions from the current best estimator: **Stacking with Support Vector Machine** 
+2. Add predictions from only the **base estimators**
+3. Add predictions from **both**
+
+**Stacking with Deep Neural Nets** Observations:
+- Even though the last one has 5 more features than the plain DNN and as a result more than 10% more trainable params, the training time is almost the same
+- All three perform better than any of the previous models
+- No significant differences between them (within error) – to be expected since the engineered features are highly correlated, leading to diminishing returns after having added one of them
+''')
+
+st.divider()
+st.markdown('<a name="evaluation"></a>', unsafe_allow_html=True)
+st.write('## Evaluation')
+
+st.image(DATA_PATH + 'model-comparison.png')
+
+st.write('''
+Notes: 
+- The runtimes are all inflated by the KFold cross validation. Each model ran 5 times on 80% of the data (320%).
+- On the other hand, the runtimes of the **Deep Stacked** algorithms only include the fitting of the neural net itself, but not the creation of the extra features through other alogrithms. Technically, these would need to be included, in order to gauge the runtime of the entire ML pipeline.
+
+**CONCLUSION:**
+- Deep learning yields better results than shallow learning
+- Voting is crap
+- Stacking is great – but the final estimator matters
+- Deep Stacking is best
+''')
+
+# # st.image(DATA_PATH + 'permutation_importance.png')
+
+st.divider()
+st.markdown('<a name="final-thoughts"></a>', unsafe_allow_html=True)
+st.write('''
+## Final Thoughts
+
+
+
+''')

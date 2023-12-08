@@ -6,8 +6,7 @@ import pandas as pd
 import st_utils
 
 # Paths
-CSV_PATH = 'data/australian_weather/csv/'
-PLOT_PATH = 'data/australian_weather/plots/'
+DATA_PATH = 'data/australian_weather/'
 TITLE_IMG_PATH = 'data/australian_weather/australia.png'
 
 
@@ -72,7 +71,7 @@ st.markdown('<a name="eda"></a>', unsafe_allow_html=True)
 st.write('## Exploratory Data Analysis')
 st.write('A first look at the dataset:')
 
-st.dataframe(pd.read_csv(CSV_PATH + 'head.csv'))
+st.dataframe(pd.read_csv(DATA_PATH + 'head.csv'))
 st.write('''
     - Each corresponds to a day's measurement at a given location in Australia
     - 226,868 rows and 24 columns
@@ -101,11 +100,11 @@ st.write('''
 st_utils.minor_div()
 
 # st.write('')
-# st.dataframe(pd.read_csv(CSV_PATH + 'cols_info.csv'))
+# st.dataframe(pd.read_csv(DATA_PATH + 'cols_info.csv'))
 
 
 
-st.image(PLOT_PATH + 'nunique.png')
+st.image(DATA_PATH + 'nunique.png')
 st.write('''
     - continuous features: *Temperature, Rainfall, Evaporation, Sunshine, WindSpeed, Humidity, Pressure*
     - categorical features: *Date, Location, WindDir, Cloud, RainToday*
@@ -113,7 +112,7 @@ st.write('''
 
 st_utils.minor_div()
 
-st.image(PLOT_PATH + 'heatmap.png')
+st.image(DATA_PATH + 'heatmap.png')
 
 st_utils.minor_div()
 
@@ -126,10 +125,10 @@ st.write('''
     - Total missing values: 644,978 (11.85 %)
     - Rows with missing values: 140,583  (61.97 %)
 ''')
-st.image(PLOT_PATH + 'missing.png')
+st.image(DATA_PATH + 'missing.png')
 
 
-st.image(PLOT_PATH + 'missing_cols_by_loc.png')
+st.image(DATA_PATH + 'missing_cols_by_loc.png')
 
 
 st.divider()
@@ -159,9 +158,9 @@ st.divider()
 st.markdown('<a name="evaluation"></a>', unsafe_allow_html=True)
 st.write('## Evaluation')
 
-# st.image(PLOT_PATH + 'roc_pr_curves.png')
+# st.image(DATA_PATH + 'roc_pr_curves.png')
 st.markdown('<hr style="border:0.5px solid #FFDFC2;"/>', unsafe_allow_html=True)
-# st.image(PLOT_PATH + 'permutation_importance.png')
+# st.image(DATA_PATH + 'permutation_importance.png')
 
 st.divider()
 st.markdown('<a name="final-thoughts"></a>', unsafe_allow_html=True)

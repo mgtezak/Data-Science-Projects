@@ -6,8 +6,7 @@ import pandas as pd
 import st_utils
 
 # Paths
-CSV_PATH = 'data/smoker_status/csv/'
-PLOT_PATH = 'data/smoker_status/plots/'
+DATA_PATH = 'data/smoker_status/'
 TITLE_IMG_PATH = 'data/smoker_status/cigarette.png'
 
 
@@ -61,7 +60,7 @@ st.markdown('<a name="eda"></a>', unsafe_allow_html=True)
 st.write('## Exploratory Data Analysis')
 st.write('A first look at the dataset:')
 
-st.dataframe(pd.read_csv(CSV_PATH + 'head.csv'))
+st.dataframe(pd.read_csv(DATA_PATH + 'head.csv'))
 
 st.write('''
     - Each row corresponds to measurements taken from one individual
@@ -85,7 +84,7 @@ st.write('''
 st_utils.minor_div()
 
 
-st.image(PLOT_PATH + 'nunique.png')
+st.image(DATA_PATH + 'nunique.png')
 
 st.write('''
     - Some features are binary: 
@@ -104,7 +103,7 @@ st.write('''
     of the test data differ from those of the training data.
 ''')
 
-st.image(PLOT_PATH + 'data_drift.png')
+st.image(DATA_PATH + 'data_drift.png')
 
 st.write('''
     - Train and test set distributions are very well aligned -> no data drift.
@@ -122,7 +121,7 @@ st.write('''
 
 st.markdown('<hr style="border:0.5px solid #FFDFC2;"/>', unsafe_allow_html=True)
 
-st.image(PLOT_PATH + 'heatmap.png')
+st.image(DATA_PATH + 'heatmap.png')
 
 st.write('''
     - Often times features of the same group are intercorrelated:
@@ -221,7 +220,7 @@ st.write('''
     which turned out to be very close to my final score on the actual testset: **0.8675**.
 ''')
 
-st.image(PLOT_PATH + 'roc_pr_curves.png')
+st.image(DATA_PATH + 'roc_pr_curves.png')
 st.write('''
     It's worth mentioning that every single classifier I tried had relatively low variability in their scores, so the results are robust.
     No doubt this is in part due to the large amount of data available, 
@@ -231,7 +230,7 @@ st.write('''
 ''')
 
 st.markdown('<hr style="border:0.5px solid #FFDFC2;"/>', unsafe_allow_html=True)
-st.image(PLOT_PATH + 'permutation_importance.png')
+st.image(DATA_PATH + 'permutation_importance.png')
 
 st.write('''
     Height is the very best predictor of whether or not somebody is a smoker. 
