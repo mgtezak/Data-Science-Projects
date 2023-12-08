@@ -35,11 +35,11 @@ st.image(TITLE_IMG_PATH, caption='Image credit: Hazel Gibson')
 st.markdown('<a name="intro"></a>', unsafe_allow_html=True)
 st.write('## Introduction')
 
-st.write('''
-    - [Link to the competition](https://www.kaggle.com/competitions/playground-series-s3e25/)
-    - [Link to the original dataset](https://www.kaggle.com/datasets/jocelyndumlao/prediction-of-mohs-hardness-with-machine-learning)
-    - [Related blog post](https://blogs.egu.eu/geolog/2020/09/25/freidrich-mohs-and-the-mineral-scale-of-hardness/)
-''')
+# st.write('''
+#     - [Link to the competition](https://www.kaggle.com/competitions/playground-series-s3e25/)
+#     - [Link to the original dataset](https://www.kaggle.com/datasets/jocelyndumlao/prediction-of-mohs-hardness-with-machine-learning)
+#     - [Related blog post](https://blogs.egu.eu/geolog/2020/09/25/freidrich-mohs-and-the-mineral-scale-of-hardness/)
+# ''')
 
 
 st.divider()
