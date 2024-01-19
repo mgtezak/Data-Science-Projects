@@ -41,8 +41,8 @@ If you're not familiar with Advent of Code, here's a quick description from thei
 > *Advent of Code is an annual Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like.*
 
 I'm a huge fan of these puzzles and the incredibly supportive community of people that grew around it. They helped me learn a ton about problem solving, data parsing, data structures & algorithms, how and when to use various python libraries, how to write clean & pythonic code and much more.
-After having solved hundreds of these puzzles I decided to embark on the passion project of building [my own website](https://aoc-puzzle-solver.streamlit.app/) devoted to AoC, where visitors can get tips about how to approach each puzzle, interactively engage with my puzzle solutions using their own puzzle input, decipher AoC grid letters and more.
-Since I'm always looking to improve my data analysis skills, I thought it would be nice to explore any available public data about these puzzles and the community of people who compete at each annual event, so I made it into a data analysis project.
+After having solved hundreds of these puzzles I decided to embark on the passion project of building [my own website](https://aoc-puzzle-solver.streamlit.app/) devoted to AoC, where visitors can get tips about how to approach each puzzle, interactively engage with my puzzle solutions using their own puzzle input, decipher ascii letter grids and more.
+Since I'm always looking to improve my data analysis skills, I thought it would be nice to explore any available public data about these puzzles and the community of people who compete at each annual event, so I made it into a data analysis/visualzation project.
 There are 3 main aspects to this project:   
 1. **Data Collection:** I collected and compiled the data for this project myself.
 2. **Data Visualization:** Most of my time was spent deepening my understanding of how to create a diverse set of visually appealing and insightful plots.

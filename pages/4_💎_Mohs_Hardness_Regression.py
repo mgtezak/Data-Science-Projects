@@ -21,7 +21,6 @@ st.sidebar.markdown("""
     2. [Exploratory Data Analysis](#eda)
     3. [Modeling](#modeling)
     4. [Evaluation](#evaluation)
-    5. [Final Thoughts](#final-thoughts)
 """)
 st.sidebar.divider()
 st_utils.get_sidebar_links()
@@ -35,11 +34,21 @@ st.image(TITLE_IMG_PATH, caption='Image credit: Hazel Gibson')
 st.markdown('<a name="intro"></a>', unsafe_allow_html=True)
 st.write('## Introduction')
 
-# st.write('''
-#     - [Link to the competition](https://www.kaggle.com/competitions/playground-series-s3e25/)
-#     - [Link to the original dataset](https://www.kaggle.com/datasets/jocelyndumlao/prediction-of-mohs-hardness-with-machine-learning)
-#     - [Related blog post](https://blogs.egu.eu/geolog/2020/09/25/freidrich-mohs-and-the-mineral-scale-of-hardness/)
-# ''')
+st.write('''
+         For this Episode of the Series, your 
+
+    The objective of this [Kaggle competion](https://www.kaggle.com/competitions/playground-series-s3e25/) 
+    the task was to use regression to predict the Mohs hardness of a mineral, given its properties.
+    The metric used in order to score the participants was the Median Absolute Error (MedAE).
+         
+    The dataset was synthetically generated from a deep learning model trained on a real-word dataset, which is called
+    ["Prediction of Mohs Hardness with Machine Learning"](https://www.kaggle.com/datasets/jocelyndumlao/prediction-of-mohs-hardness-with-machine-learning) on Kaggle.
+    Feature distributions are close to, but not exactly the same, as the original.
+         
+    If you'd like to check out this project's source code you can check out my two Kaggle notebooks
+    ([one](https://www.kaggle.com/code/michaeltezak/eda-stacking-model/) & [two](https://www.kaggle.com/code/michaeltezak/comparison-shallow-deep-voting-stacking)).
+    This [related blog post](https://blogs.egu.eu/geolog/2020/09/25/freidrich-mohs-and-the-mineral-scale-of-hardness/) is interesting as well. 
+''')
 
 
 st.divider()
@@ -218,18 +227,15 @@ Notes:
 
 **CONCLUSION:**
 - Deep learning yields better results than shallow learning
-- Voting is crap
+- Voting is bad
 - Stacking is great – but the final estimator matters
 - Deep Stacking is best
 ''')
 
 # # st.image(DATA_PATH + 'permutation_importance.png')
 
-st.divider()
-st.markdown('<a name="final-thoughts"></a>', unsafe_allow_html=True)
-st.write('''
-## Final Thoughts
-
-
-
-''')
+# st.divider()
+# st.markdown('<a name="final-thoughts"></a>', unsafe_allow_html=True)
+# st.write('''
+# ## Final Thoughts
+# ''')
