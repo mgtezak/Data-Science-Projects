@@ -85,7 +85,7 @@ st.write('''
         - **Wind**: *WindGustDir*, *WindDir9am*, *WindDir3pm*, *WindGustSpeed*, *WindSpeed9am*, *WindSpeed3pm* *(speed in km/h)*
         - **Temperature**: *MinTemp*, *MaxTemp*, *Temp9am*, *Temp3pm* *(°C)*
         - **Humidity**: *Humidity9am*, *Humidity3pm* *(%)*
-        - **Cloud**: *Cloud9am*, *Cloud3pm* *(number of eigths of sky)*
+        - **Cloud**: *Cloud9am*, *Cloud3pm* *(number of eighths of sky)*
         - **Pressure**: *Pressure9am*, *Pressure3pm* *(hpa)*
     - Singular features:
         - *Date*

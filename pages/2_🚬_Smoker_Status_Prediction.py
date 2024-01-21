@@ -73,7 +73,7 @@ st.write('''
     - Many features can be sorted into groups:
         - **General physique**: age, height, weight, waist
         - **Eyesight**: eyesight(left), eyesight(right)
-        - **Hearig**: hearing(left), hearing(right)
+        - **Hearing**: hearing(left), hearing(right)
         - **Blood pressure**: systolic, relaxation
         - **Lipid profile**: Cholesterol, triglyceride, HDL, LDL
     - While some stand alone:
@@ -134,7 +134,7 @@ st.write('''
         - triglyceride & HDL
         - very little correlation between these two pairs
     - Some correlations beyond group boundaries:
-        - hemoglobin correlates with general pysique (height, weight, waist) and one of the lipid pairs (triglyceride & HDL), which in turn also correlates with general physique.
+        - hemoglobin correlates with general physique (height, weight, waist) and one of the lipid pairs (triglyceride & HDL), which in turn also correlates with general physique.
     - Some features seem almost completely independent:
         - Urine protein
         - dental caries
@@ -153,7 +153,7 @@ st.write('''
     and to possibly increase the signal to noise ratio. Specifically here's what I did:
             
     - Create BMI from height & weight: kg / m^2
-    - Replacedeyesight outliers at 9.9 with 0.0
+    - Replace eyesight outliers at 9.9 with 0.0
     - Replace eyesight left/right with mean, min & max
     - Replace hearings left/right with mean, min & max
     - Add mean blood pressure
@@ -161,7 +161,7 @@ st.write('''
     - Clip the most extreme outliers of the skewed columns Gtp, HDL, LDL, ALT, AST & serum creatinine
 
     I thought of further features to add. For example BMI categories such as underweight, normal, overweight & obese,
-    or bloodpressure categories such as low, normal, hypertension stage 1 & 2. 
+    or blood pressure categories such as low, normal, hypertension stage 1 & 2. 
     In the end I didn't because I figured that it was doubtful that these categories would help much.
 ''')
 
@@ -217,7 +217,7 @@ st.write('''
     - The *VotingClassifier* performed well enough but not always better than its best estimator, whereas the *StackingClassifier* performed even better than that.
     
     With a simple training-validation-split I got an area under the ROC curve of **0.8683**,
-    which turned out to be very close to my final score on the actual testset: **0.8675**.
+    which turned out to be very close to my final score on the actual test set: **0.8675**.
 ''')
 
 st.image(DATA_PATH + 'roc_pr_curves.png')

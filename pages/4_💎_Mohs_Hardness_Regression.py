@@ -219,7 +219,7 @@ st.image(DATA_PATH + 'model-comparison.png')
 st.write('''
 Notes: 
 - The runtimes are all inflated by the KFold cross validation. Each model ran 5 times on 80% of the data (320%).
-- On the other hand, the runtimes of the **Deep Stacked** algorithms only include the fitting of the neural net itself, but not the creation of the extra features through other alogrithms. Technically, these would need to be included, in order to gauge the runtime of the entire ML pipeline.
+- On the other hand, the runtimes of the **Deep Stacked** algorithms only include the fitting of the neural net itself, but not the creation of the extra features through other algorithms. Technically, these would need to be included, in order to gauge the runtime of the entire ML pipeline.
 
 **CONCLUSION:**
 - Deep learning yields better results than shallow learning

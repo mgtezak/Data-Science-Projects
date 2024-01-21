@@ -42,7 +42,7 @@ If you're not familiar with Advent of Code, here's a quick description from thei
 
 I'm a huge fan of these puzzles and the incredibly supportive community of people that grew around it. They helped me learn a ton about problem solving, data parsing, data structures & algorithms, how and when to use various python libraries, how to write clean & pythonic code and much more.
 After having solved hundreds of these puzzles I decided to embark on the passion project of building [my own website](https://aoc-puzzle-solver.streamlit.app/) devoted to AoC, where visitors can get tips about how to approach each puzzle, interactively engage with my puzzle solutions using their own puzzle input, decipher ascii letter grids and more.
-Since I'm always looking to improve my data analysis skills, I thought it would be nice to explore any available public data about these puzzles and the community of people who compete at each annual event, so I made it into a data analysis/visualzation project.
+Since I'm always looking to improve my data analysis skills, I thought it would be nice to explore any available public data about these puzzles and the community of people who compete at each annual event, so I made it into a data analysis/visualization project.
 There are 3 main aspects to this project:   
 1. **Data Collection:** I collected and compiled the data for this project myself.
 2. **Data Visualization:** Most of my time was spent deepening my understanding of how to create a diverse set of visually appealing and insightful plots.
@@ -63,7 +63,7 @@ st.write('''
     - Technically it's possible to keep all the data in a single table, but it makes sense to retain two distinct tables: *completions* & *leaderboard*
     - *Completions* has 225 rows, each representing a single puzzle (25 days for each of the 9 years)
     - *Leaderboard* has 45,000 rows, each representing a single submission (100 submissions for each of the 2 parts of each of the 225 puzzles)
-    - I kept both csv files very lean, avoiding redundance. For example *leaderboard* has a single *timestamp* column specifying the year & day of the puzzle as well as the time of the submission. When loading the data, it is recommended to unpack these variables.
+    - I kept both CSV files very lean, avoiding redundancy. For example *leaderboard* has a single *timestamp* column specifying the year & day of the puzzle as well as the time of the submission. When loading the data, it is recommended to unpack these variables.
     - It's not necessary to update *leaderboard* more than once a year, since the data, once uploaded, is unchanging
     - On the other hand, the columns *gold* and *silver* in *completions* change every time anybody completes a new puzzle – I might update it every couple of months or so
 - **Uploading the Data to Kaggle:**
@@ -132,8 +132,8 @@ st.write('''
 st.image(DATA_PATH + 'user_info_plot.png')
 st.write('''
     *Anonymity*
-    - Anonymous AoC'ers are almost equally as likely to have high performances and be financially supportive
-    - 5 among the top 100 AoC-ers are anonymous, which is only slightly subproportional (they represent 7.8% of the total leaderboard)
+    - Anonymous AoC-ers are almost equally as likely to have high performances and be financially supportive
+    - 5 among the top 100 are anonymous, which is only slightly sub-proportional (they represent 7.8% of the total leaderboard)
     - The highest annual score ever achieved was by an anonymous user
     - Why be anonymous? Perhaps they don't seek fame at all and are just in it for the love of the game. Perhaps they don't want their bosses finding out, what they spend much of their productive energy on :-P
 ''') 
