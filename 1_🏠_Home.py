@@ -11,17 +11,32 @@ st_utils.get_sidebar_links()
 
 st.title('Hi There! 👋')
 st.write("""
-    Hello, I'm [Michael Tezak](https://mgtezak.github.io), an aspiring Data Scientist from Berlin, Germany.
-    I made this app to present some projects that I've worked on which make use of data analysis, 
-    visualization and machine learning. 
-    It is still a work in progress, but feel free to look around and give me feedback if you like (*mgtezak@gmail.com*).
-         
-    Also, if you happen to be into solving coding puzzles, come check out my 
-    [Advent-of-Code-Puzzle-Solver](https://aoc-puzzle-solver.streamlit.app/) I built recently.
-    
-""")
+    Hello, I'm [Michael Tezak](https://mgtezak.github.io), a Python Programmer & Data Scientist from Berlin, Germany.
+    I am currently looking for work and created this app to present some projects that 
+    I've worked on which make use of data analysis, visualization and machine learning.
+    Although still fairly new to data science, I feel more than comfortable working with the following libraries & frameworks:""")
+col1, col2 = st.columns((2, 3))
+col1.write('''
+    - NumPy
+    - Pandas
+    - Matplotlib
+    - Seaborn
+    - Streamlit
+''')
 
-
+col2.write('''
+    - SciKit-Learn
+    - XGBoost
+    - LightGBM
+    - TensorFlow
+    - PyTorch
+''')
 
 st.write("""
+    Check out my recent projects (any feedback is more than welcome):
+         
+    - [Advent of Code Public Stats Analysis](Advent_of_Code_Public_Stats_Analysis)
+    - [Mohs Hardness Regression](Mohs_Hardness_Regression)
+    - [Smoker Status Prediction](Smoker_Status_Prediction)
+    - [Australian Weather Prediction](Australian_Weather_Prediction)
 """)
