@@ -41,7 +41,12 @@ st.image(TITLE_IMG_PATH, caption='Image created with DALL·E')
 st.markdown('<a name="intro"></a>', unsafe_allow_html=True)
 st.write('## Introduction')
 
-st.write("I've already finished this project and am in the process of rebuilding my project presentation here.")
+st.write('''
+    This project was done in the context of data science bootcamp at [*DataScientest*](https://datascientest.com/). 
+    The objective was to use machine learning in order to predict the weather at 49 different locations in Australia.
+         
+         
+         ''')
 
 st.write('''
     Originally I uploaded an interactive docker containerized version of this project ([link](https://australia-weather-prediction.onrender.com/))
@@ -133,18 +138,27 @@ st.image(DATA_PATH + 'missing_cols_by_loc.png')
 
 st.divider()
 st.markdown('<a name="feature-engineering"></a>', unsafe_allow_html=True)
-st.write('## Feature Engineering')
+st.write('''
+         ## Feature Engineering
+         
+         
+         Currently in the process of migrating this project here from its original location.''')
 
 
 
 st.divider()
 st.markdown('<a name="scaling"></a>', unsafe_allow_html=True)
-st.write('## Scaling')
+st.write('''## Scaling
+         
+         *in the works*''')
 
 
 st.divider()
 st.markdown('<a name="modeling"></a>', unsafe_allow_html=True)
-st.write('## Modeling')
+st.write('''## Modeling
+         
+         
+         *in the works*''')
 
 st.write('''
 
@@ -156,7 +170,9 @@ st.write('''
 
 st.divider()
 st.markdown('<a name="evaluation"></a>', unsafe_allow_html=True)
-st.write('## Evaluation')
+st.write('''## Evaluation
+         
+         *in the works*''')
 
 # st.image(DATA_PATH + 'roc_pr_curves.png')
 st.markdown('<hr style="border:0.5px solid #FFDFC2;"/>', unsafe_allow_html=True)
@@ -164,4 +180,7 @@ st.markdown('<hr style="border:0.5px solid #FFDFC2;"/>', unsafe_allow_html=True)
 
 st.divider()
 st.markdown('<a name="final-thoughts"></a>', unsafe_allow_html=True)
-st.write('## Final Thoughts')
+st.write('''## Final Thoughts
+         
+
+         *in the works*''')
