@@ -66,12 +66,13 @@ st.write('''
     - I kept both CSV files very lean, avoiding redundancy. For example *leaderboard* has a single *timestamp* column specifying the year & day of the puzzle as well as the time of the submission. When loading the data, it is recommended to unpack these variables.
     - It's not necessary to update *leaderboard* more than once a year, since the data, once uploaded, is unchanging
     - On the other hand, the columns *gold* and *silver* in *completions* change every time anybody completes a new puzzle – I might update it every couple of months or so
-- **Uploading the Data to Kaggle:**
-    - I made the dataset publicly available on [kaggle](https://www.kaggle.com/datasets/michaeltezak/advent-of-code-public-stats)
-    - One can also find the [kaggle notebook](https://www.kaggle.com/code/michaeltezak/visualizing-advent-of-code-stats) which I used to create all the plots
-    - Anyone is welcome to copy & edit it, to create their own visualizations
 ''')
-
+# st.write('''
+#     - **Uploading the Data to Kaggle:**
+#         - I made the dataset publicly available on [kaggle](https://www.kaggle.com/datasets/michaeltezak/advent-of-code-public-stats)
+#         - One can also find the [kaggle notebook](https://www.kaggle.com/code/michaeltezak/visualizing-advent-of-code-stats) which I used to create all the plots
+#         - Anyone is welcome to copy & edit it, to create their own visualizations
+# ''')
 st.write('**Leaderboard Dataframe (unpacked):**')
 st.dataframe(pd.read_csv(DATA_PATH + 'leaderboard_head.csv'))
 st.write('**Completions Dataframe (unpacked):**')
