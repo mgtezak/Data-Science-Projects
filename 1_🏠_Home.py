@@ -40,3 +40,12 @@ st.write("""
     - 🚬 [Smoker Status Prediction](Smoker_Status_Prediction)
     - 🌦️ [Australian Weather Prediction](Australian_Weather_Prediction)
 """)
+
+st.markdown("""
+    Check out my recent projects (any feedback is more than welcome):
+    - <a href="https://mgtezak-data-science.streamlit.app/Advent_of_Code_Public_Stats_Analysis" target="_self">🎄 Advent of Code Public Stats Analysis</a>
+    - <a href="https://mgtezak-data-science.streamlit.app/Mohs_Hardness_Regression" target="_self">💎 Mohs Hardness Regression</a>
+    - <a href="https://mgtezak-data-science.streamlit.app/Smoker_Status_Prediction" target="_self">🚬 Smoker Status Prediction</a>
+    - <a href="https://mgtezak-data-science.streamlit.app/Australian_Weather_Prediction" target="_self">🌦️ Australian Weather Prediction</a>
+""", unsafe_allow_html=True
+)
