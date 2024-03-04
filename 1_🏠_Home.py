@@ -14,7 +14,9 @@ st.write("""
     Hello, I'm [Michael Tezak](https://mgtezak.github.io), a Python Programmer & Data Scientist from Berlin, Germany.
     I am currently looking for work and created this app to present some recent projects of mine 
     which make use of data analysis, visualization and machine learning.
-    Although still fairly new to data science, I feel more than comfortable working with the following libraries & frameworks:""")
+    Although still fairly new to data science, I feel more than comfortable working with the following libraries & frameworks:
+""")
+
 col1, col2 = st.columns((2, 3))
 col1.write('''
     - NumPy
@@ -32,20 +34,10 @@ col2.write('''
     - PyTorch
 ''')
 
-st.write("""
-    Check out my recent projects (any feedback is more than welcome):
-         
-    - 🎄 [Advent of Code Public Stats Analysis](Advent_of_Code_Public_Stats_Analysis)
-    - 💎 [Mohs Hardness Regression](Mohs_Hardness_Regression)
-    - 🚬 [Smoker Status Prediction](Smoker_Status_Prediction)
-    - 🌦️ [Australian Weather Prediction](Australian_Weather_Prediction)
-""")
-
 st.markdown("""
     Check out my recent projects (any feedback is more than welcome):
     - <a href="https://mgtezak-data-science.streamlit.app/Advent_of_Code_Public_Stats_Analysis" target="_self">🎄 Advent of Code Public Stats Analysis</a>
     - <a href="https://mgtezak-data-science.streamlit.app/Mohs_Hardness_Regression" target="_self">💎 Mohs Hardness Regression</a>
     - <a href="https://mgtezak-data-science.streamlit.app/Smoker_Status_Prediction" target="_self">🚬 Smoker Status Prediction</a>
     - <a href="https://mgtezak-data-science.streamlit.app/Australian_Weather_Prediction" target="_self">🌦️ Australian Weather Prediction</a>
-""", unsafe_allow_html=True
-)
+""", unsafe_allow_html=True)
