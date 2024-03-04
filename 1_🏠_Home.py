@@ -35,8 +35,8 @@ col2.write('''
 st.write("""
     Check out my recent projects (any feedback is more than welcome):
          
-    - 🎄[Advent of Code Public Stats Analysis](Advent_of_Code_Public_Stats_Analysis)
-    - 💎[Mohs Hardness Regression](Mohs_Hardness_Regression)
-    - 🚬[Smoker Status Prediction](Smoker_Status_Prediction)
-    - 🌦️[Australian Weather Prediction](Australian_Weather_Prediction)
+    - 🎄 [Advent of Code Public Stats Analysis](Advent_of_Code_Public_Stats_Analysis)
+    - 💎 [Mohs Hardness Regression](Mohs_Hardness_Regression)
+    - 🚬 [Smoker Status Prediction](Smoker_Status_Prediction)
+    - 🌦️ [Australian Weather Prediction](Australian_Weather_Prediction)
 """)
